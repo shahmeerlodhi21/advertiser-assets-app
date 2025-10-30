@@ -1,6 +1,8 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import gsap from "gsap";
+import Modal from "@/app/components/Modal";
+import { redirect } from "next/navigation";
 
 export default function verifyPassword() {
   const [email, setEmail] = useState("");
@@ -11,6 +13,7 @@ export default function verifyPassword() {
   const subtitleRef = useRef(null);
   const formRef = useRef(null);
   const btnRef = useRef(null);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
@@ -47,7 +50,7 @@ export default function verifyPassword() {
 
     setTimeout(() => {
       setLoading(false);
-      alert("Password reset link sent successfully!");
+      setShowModal(true); // show modal instead of alert
     }, 1500);
   };
 
@@ -107,7 +110,10 @@ export default function verifyPassword() {
           </button>
         </form>
 
-        <p className="support text-center m-auto flex" style={{gap: '5px',maxWidth: '400px',width: '90%'}}>
+        <p
+          className="support text-center m-auto flex"
+          style={{ gap: "5px", maxWidth: "400px", width: "90%" }}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
@@ -140,6 +146,14 @@ export default function verifyPassword() {
           will expire in 15 minutes for your security.
         </p>
       </div>
+      <Modal
+        show={showModal}
+        onClose={() => setShowModal(false)}
+        onButtonClick={()=>redirect('/auth/login')} // 👈 optional function
+        title="Reset Link Sent!"
+        message="We’ve sent a password reset link to your registered email. Please check your inbox."
+        buttonText="Back To Login"
+      />
     </div>
   );
 }

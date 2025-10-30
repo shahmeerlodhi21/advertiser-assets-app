@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import Head from "next/head";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 
 export default function LoginPage() {
   const logoRef = useRef();
@@ -55,14 +56,7 @@ export default function LoginPage() {
 
     return () => tl.kill();
   }, []);
-  useEffect(() => {
-    gsap.from(".login-card", {
-      opacity: 0,
-      scale: 0.96,
-      duration: 0.3,
-      ease: "power2.out",
-    });
-  }, []);
+
 
   // Basic validation
   const validate = () => {
@@ -328,7 +322,7 @@ export default function LoginPage() {
                     href="#"
                     onClick={(e) => {
                       e.preventDefault();
-                      alert("Forgot password flow (UI only)");
+                      redirect('/auth/forgot-password')
                     }}
                   >
                     Forgot Password?

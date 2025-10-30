@@ -1,5 +1,7 @@
+// layout.js (server component — keeps metadata working)
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import AnimatedLayout from "@/app/animated-layout"; // client-side wrapper
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,7 +24,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <AnimatedLayout>{children}</AnimatedLayout>
       </body>
     </html>
   );
