@@ -378,7 +378,7 @@ body {
 
 @media (max-width: 520px) {
   .left {
-    padding: 20px;
+    padding: 10px;
   }
   .left-inner{
     max-width: 100%;
