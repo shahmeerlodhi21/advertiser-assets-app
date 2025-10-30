@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap");
+@import "tailwindcss/preflight";
+@import "tailwindcss/utilities";
+
 @font-face {
   font-family: "HomepageBaukasten";
   src: url("/Homepagebaukasten-Bold.ttf") format("truetype");
@@ -61,7 +64,6 @@ body {
   opacity: 0;
   transform: translateY(20px);
 }
-
 
 /* LEFT */
 .left {
@@ -240,7 +242,7 @@ body {
   line-height: normal;
   text-decoration: none;
 }
-.forgot:hover{
+.forgot:hover {
   text-decoration: underline;
 }
 
@@ -365,11 +367,11 @@ body {
     padding: 80px 28px;
     justify-content: center;
   }
-  .left-inner{
+  .left-inner {
     max-width: 100% !important;
   }
   .right {
-   display: none;
+    display: none;
   }
   .title {
     font-size: 28px;
@@ -380,7 +382,7 @@ body {
   .left {
     padding: 10px !important;
   }
-  .left-inner{
+  .left-inner {
     max-width: 100%;
   }
   .title {
@@ -397,5 +399,290 @@ body {
     padding: 14px;
     font-size: 15px;
     border-radius: 8px;
+  }
+}
+
+/* -------------------------------------------------- 2FA Screen ------------------------------------------ */
+
+.verify-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #fff;
+  padding: 10px;
+}
+
+.verify-container {
+  text-align: center;
+  max-width: 570px;
+  width: 90%;
+  opacity: 0;
+}
+
+.verify-title {
+  color: #313131;
+  font-family: HomepageBaukasten;
+  font-size: 38px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 14px;
+}
+
+.verify-subtitle {
+  color: #313131;
+  text-align: center;
+  font-family: HomepageBaukasten;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 27px */
+  margin-bottom: 35px;
+}
+
+.verify-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.code-inputs {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.code-field {
+  width: 16.2%;
+  height: 80px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: 1px solid #dcdcdc;
+  background: #fff;
+  box-shadow: 0 4px 41.9px 0 rgba(191, 191, 191, 0.15);
+  color: #5e5a5a;
+  font-family: HomepageBaukasten;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  transition: all 0.25s ease;
+}
+
+.code-field:focus {
+  border-color: #ff9032;
+  outline: none;
+  transform: scale(1.05);
+}
+
+.error-border {
+  border-color: #ff0000 !important;
+}
+
+.error-msg {
+  color: #ff0000;
+  font-size: 14px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.verify-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 30px;
+  font-size: 14px;
+  margin-bottom: 30px;
+  color: #666;
+}
+
+.resend {
+  color: #ff9032;
+  text-decoration: none;
+  font-weight: 500;
+}
+.resend:hover {
+  text-decoration: underline;
+}
+
+.verify-btn {
+  background: #ff9032;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 0;
+  width: 100%;
+  font-family: HomepageBaukasten;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.verify-btn:hover {
+  background: #ff7d0f;
+}
+
+.spinner {
+  border: 3px solid rgba(255, 255, 255, 0.4);
+  border-top-color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.support {
+  margin-top: 20px;
+  color: #313131;
+  text-align: center;
+  font-family: HomepageBaukasten;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 18px */
+}
+
+.support a {
+  text-decoration: none;
+}
+/* =========================
+   RESPONSIVE DESIGN
+   ========================= */
+
+/* For large tablets and small laptops (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .verify-title {
+    font-size: 32px;
+  }
+
+  .verify-subtitle {
+    font-size: 16px;
+  }
+
+  .code-field {
+    height: 70px;
+    font-size: 22px;
+  }
+}
+
+/* For tablets (max-width: 768px) */
+@media (max-width: 768px) {
+  .verify-container {
+    max-width: 480px;
+  }
+
+  .verify-title {
+    font-size: 28px;
+  }
+
+  .verify-subtitle {
+    font-size: 15px;
+    margin-bottom: 28px;
+  }
+
+  .code-inputs {
+    gap: 10px;
+  }
+
+  .code-field {
+    height: 65px;
+    font-size: 20px;
+  }
+
+  .verify-options {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+  }
+
+  .verify-btn {
+    font-size: 15px;
+    padding: 12px 0;
+  }
+}
+
+/* For mobile devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .verify-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 15px;
+  }
+
+  .verify-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .verify-subtitle {
+    font-size: 12px !important;
+    margin-bottom: 22px;
+  }
+
+  .code-inputs {
+    width: 100%;
+    gap: 8px;
+  }
+
+  .code-field {
+    width: 14%;
+    height: 56px;
+    font-size: 18px;
+  }
+
+  .verify-options {
+    font-size: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .verify-btn {
+    font-size: 14px;
+    padding: 12px 0;
+  }
+
+  .support {
+    font-size: 11px;
+  }
+}
+
+/* For very small screens (max-width: 360px) */
+@media (max-width: 360px) {
+  .code-field {
+    width: 13%;
+    height: 50px;
+    font-size: 16px;
+  }
+
+  .verify-title {
+    font-size: 22px;
+  }
+
+  .verify-subtitle {
+    font-size: 13px;
+  }
+
+  .verify-btn {
+    font-size: 13px;
   }
 }
