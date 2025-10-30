@@ -149,7 +149,7 @@ export default function verifyPassword() {
       <Modal
         show={showModal}
         onClose={() => setShowModal(false)}
-        onButtonClick={()=>redirect('/auth/login')} // 👈 optional function
+        onButtonClick={() => redirect("/auth/login")} // 👈 optional function
         title="Reset Link Sent!"
         message="We’ve sent a password reset link to your registered email. Please check your inbox."
         buttonText="Back To Login"

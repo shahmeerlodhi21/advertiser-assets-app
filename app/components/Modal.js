@@ -55,16 +55,16 @@ export default function Modal({
             <path
               d="M27.9993 51.3334C40.886 51.3334 51.3327 40.8867 51.3327 28.0001C51.3327 15.1134 40.886 4.66675 27.9993 4.66675C15.1127 4.66675 4.66602 15.1134 4.66602 28.0001C4.66602 40.8867 15.1127 51.3334 27.9993 51.3334Z"
               stroke="#FF9032"
-              stroke-width="3"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M21 27.9999L25.6667 32.6666L35 23.3333"
               stroke="#FF9032"
-              stroke-width="3"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         </div>
