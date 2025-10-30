@@ -669,8 +669,8 @@ body {
 /* For very small screens (max-width: 360px) */
 @media (max-width: 360px) {
   .code-field {
-    width: 13%;
-    height: 50px;
+    width: 16%;
+    height: 38px;
     font-size: 16px;
   }
 

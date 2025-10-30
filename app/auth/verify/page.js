@@ -11,63 +11,66 @@ export default function VerifyPage() {
   const btnRef = useRef(null);
   const subtitleRef = useRef(null);
 
- useEffect(() => {
-  // Focus the first input by default
-  inputsRef.current[0]?.focus();
-}, []);
+  useEffect(() => {
+    // Focus the first input by default
+    inputsRef.current[0]?.focus();
+  }, []);
 
-const handleChange = (e, index) => {
-  const value = e.target.value.replace(/\D/, "");
-  const newCode = [...code];
-  newCode[index] = value;
-  setCode(newCode);
-  setError("");
-
-  // Move to next input if value entered
-  if (value && index < 5) {
-    inputsRef.current[index + 1].focus();
-  }
-};
-
-const handleKeyDown = (e, index) => {
-  // Handle backspace
-  if (e.key === "Backspace" && !code[index] && index > 0) {
+  const handleChange = (e, index) => {
+    const value = e.target.value.replace(/\D/, "");
     const newCode = [...code];
-    newCode[index - 1] = "";
+    newCode[index] = value;
     setCode(newCode);
-    inputsRef.current[index - 1].focus();
-  }
+    setError("");
 
-  // Handle Ctrl + Z (undo)
-  if (e.ctrlKey && e.key === "z") {
-    e.preventDefault();
-    const newCode = [...code];
-    const lastFilled = newCode.findLastIndex((v) => v !== "");
-    if (lastFilled >= 0) {
-      newCode[lastFilled] = "";
-      setCode(newCode);
-      inputsRef.current[lastFilled]?.focus();
+    // Move to next input if value entered
+    if (value && index < 5) {
+      inputsRef.current[index + 1].focus();
     }
-  }
-};
+  };
 
-const handlePaste = (e) => {
-  e.preventDefault();
-  const pasted = e.clipboardData.getData("Text").replace(/\D/g, "").slice(0, 6).split("");
-  const newCode = [...code];
-  pasted.forEach((val, i) => {
-    if (i < 6) newCode[i] = val;
-  });
-  setCode(newCode);
-  setError("");
+  const handleKeyDown = (e, index) => {
+    // Handle backspace
+    if (e.key === "Backspace" && !code[index] && index > 0) {
+      const newCode = [...code];
+      newCode[index - 1] = "";
+      setCode(newCode);
+      inputsRef.current[index - 1].focus();
+    }
 
-  // Focus the last filled input
-  const lastIndex = pasted.length - 1;
-  if (lastIndex >= 0 && inputsRef.current[lastIndex]) {
-    inputsRef.current[lastIndex].focus();
-  }
-};
+    // Handle Ctrl + Z (undo)
+    if (e.ctrlKey && e.key === "z") {
+      e.preventDefault();
+      const newCode = [...code];
+      const lastFilled = newCode.findLastIndex((v) => v !== "");
+      if (lastFilled >= 0) {
+        newCode[lastFilled] = "";
+        setCode(newCode);
+        inputsRef.current[lastFilled]?.focus();
+      }
+    }
+  };
 
+  const handlePaste = (e) => {
+    e.preventDefault();
+    const pasted = e.clipboardData
+      .getData("Text")
+      .replace(/\D/g, "")
+      .slice(0, 6)
+      .split("");
+    const newCode = [...code];
+    pasted.forEach((val, i) => {
+      if (i < 6) newCode[i] = val;
+    });
+    setCode(newCode);
+    setError("");
+
+    // Focus the last filled input
+    const lastIndex = pasted.length - 1;
+    if (lastIndex >= 0 && inputsRef.current[lastIndex]) {
+      inputsRef.current[lastIndex].focus();
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -145,7 +148,7 @@ const handlePaste = (e) => {
             {loading ? <div className="spinner"></div> : "Verify & Continue"}
           </button>
 
-          <p className="support flex items-center" style={{gap: '5px'}}>
+          <p className="support flex items-center" style={{ gap: "5px" }}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="15"
