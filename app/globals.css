@@ -409,7 +409,11 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: #fff;
+  background-image: url("/bg.png");
+  background-position: top bottom;
+  background-size: cover;
+  width: 100%;
+  background-repeat: no-repeat;
   padding: 10px;
 }
 
